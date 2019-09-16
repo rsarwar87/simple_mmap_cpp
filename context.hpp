@@ -16,8 +16,8 @@ class Context : public ContextBase
   public:
     Context()
     : mm()
-    , spi(*this)
-    , i2c(*this)
+    //, spi(*this)
+    //, i2c(*this)
     {}
 
     int init() {
