@@ -12,7 +12,7 @@ extern "C" {
 namespace mem {
 constexpr size_t spi = 0;
 constexpr uintptr_t spi_addr = 0x41E00000;
-constexpr uint32_t spi_range = 4*1024*64;
+constexpr uint32_t spi_range = 4*1024;
 constexpr uint32_t spi_nblocks = 1;
 constexpr size_t gpio = 1;
 constexpr uintptr_t gpio_addr = 0x50001000;
