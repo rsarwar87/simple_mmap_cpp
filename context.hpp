@@ -11,28 +11,27 @@
 
 #include "memory.hpp"
 
-class Context : public ContextBase
-{
-  public:
-    Context()
-    : mm()
-    //, spi(*this)
-    //, i2c(*this)
-    {}
+class Context : public ContextBase {
+ public:
+  Context()
+      : mm()
+  //, spi(*this)
+  //, i2c(*this)
+  {}
 
-    int init() {
-        if (mm.open() < 0  
-           // || spi.init() < 0 
-           // || i2c.init() < 0
-            )
-            return -1;
+  int init() {
+    if (mm.open() < 0
+        // || spi.init() < 0
+        // || i2c.init() < 0
+    )
+      return -1;
 
-        return 0;
-    }
+    return 0;
+  }
 
-    MemoryManager mm;
-   // SpiManager spi;
-   // I2cManager i2c;
+  MemoryManager mm;
+  // SpiManager spi;
+  // I2cManager i2c;
 };
 
-#endif // __CONTEXT_HPP__
+#endif  // __CONTEXT_HPP__
