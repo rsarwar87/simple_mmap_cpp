@@ -2,29 +2,23 @@
 ///
 /// (c) Koheron
 
-
-#include <cstring>
 #include <array>
+#include <cstring>
+#include "qspi.hpp"
 
-extern "C" {
-  #include <sys/socket.h>
-  #include <sys/types.h>
-  #include <arpa/inet.h>
-  #include <ifaddrs.h>
-}
+//#include "memory_manager.hpp"
+int main() {
+  // ctl.write<reg::led>(value);
 
-#include "memory_manager.hpp"
-int main ()
-{
-        //ctl.write<reg::led>(value);
+  // cout << ctl.read<reg::led>();
+  MemoryManager mm;
+  mm.open();
 
-        //cout << ctl.read<reg::led>();
-    MemoryManager mm; 
-    mm.open();
+  Memory<mem::gpio> gpio(mm.get<mem::gpio>());
+  gpio.write<reg::gpio::DATA0>(0xF);
 
-    Memory<mem::spi> spi (mm.get<mem::spi>());
-    Memory<mem::gpio>gpio (mm.get<mem::gpio>());
-    int value = 989;
-    gpio.write<reg::gpio::DATA0>(value);
+  spi_device spi(0, 0, 0, &mm);
+  uint8_t data = 0x0;
+  spi.read(0x0, &data);
 };
 
