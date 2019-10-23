@@ -50,7 +50,7 @@ class spi_device {
     spi.write<reg::spi::SPI_CTRL>(0x186 | (m_cpol << 3) | (m_cpha << 4));
   }
 
-  void prepare_buffer(uint8_t addr, uint8_t *data, bool read = 0,
+  void prepare_buffer(uint16_t addr, uint8_t *data, bool read = 0,
                       bool print = false) {
     uint8_t buf[4];
     buf[0] = m_header;
